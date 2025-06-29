@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, #000000 60%, #44546b 100%);
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.pipe {
+    margin: auto;
+    width: 100px;
+    height: 200px;
+    background: linear-gradient(to right, #767575 0%, #d9d9d9 50%, #ac9393 100%);
+}
+
+.liquid {
+    position: relative;
+    width: 100px;
+    top: 100%;
+    transform: translateY(-50%);
+    height: 50px;
+    filter: url("#liquid");
+}
+
+.drop-top {
+    position: absolute;
+    width: 104px;
+    height: 100%;
+    left: -2px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #000000 0%, #000000 30%, #d9d9d9 80%, #62d9f0 100%);
+}
+
+.drop-top::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #83c7d4;
+    animation: scaleEffect 5s ease-in-out infinite;
+}
+
+.drop {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to bottom, #fff 0%, #f2ffff 40%, #39ceec 100%);
+    transition: all 1s ease;
+    border-radius: 50%;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 50%);
+    animation: dropFall 5s ease-in-out infinite;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.floor {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.mini-splash {
+    position: relative;
+    bottom: 0;
+    width: 200px;
+    height: 100px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mini-splash::before,
+.mini-splash::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    bottom: 50%;
+    border-radius: 50%;
+    transform: scale(0);
+    border: 2px solid rgba(255, 255, 255, 0.568);
+    animation: rippleEffect 5s ease-out infinite backwards;
+}
+
+.mini-splash::after {
+    animation-delay: 0.3s;
+}
+
+.mini-splash .dot {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+.dot::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+}
+
+.dot.d1::before {
+    right: 0;
+    top: 0;
+}
+
+.dot.d2::before {
+    left: 0;
+    top: 0;
+}
+
+.dot.d3::before {
+    right: 0;
+    top: 0;
+}
+
+.dot.d4::before {
+    left: 0;
+    top: 0;
+}
+
+.mini-splash .dot.d1 {
+    left: 0;
+    top: 0;
+    animation: splashDotLeft 5s ease-out infinite;
+    animation-delay: 0.1s;
+}
+
+.mini-splash .dot.d2 {
+    right: 0px;
+    top: 0;
+    animation: splashDotRight 5s ease-out infinite;
+    animation-delay: 0.2s;
+}
+
+.mini-splash .dot.d3 {
+    left: -150px;
+    top: 0px;
+    width: 250px;
+    animation: splashDotLeft 5s ease-out infinite;
+    animation-delay: 0.1s;
+}
+
+.mini-splash .dot.d4 {
+    right: -150px;
+    top: 0px;
+    width: 250px;
+    animation: splashDotRight 5s ease-out infinite;
+    animation-delay: 0.2s;
+}
+
+
+@keyframes scaleEffect {
+    0% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rippleEffect {
+
+    0%,
+    80% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes splashDotLeft {
+
+    0%,
+    80% {
+        transform: rotateZ(20deg);
+        top: 0px;
+        opacity: 0;
+    }
+
+    90% {
+        transform: rotateZ(-30deg);
+        top: -30px;
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotateZ(-80deg);
+        top: 0px;
+        opacity: 0;
+    }
+}
+
+@keyframes splashDotRight {
+
+    0%,
+    80% {
+        transform: rotateZ(-20deg);
+        top: 0px;
+        opacity: 0;
+    }
+
+    90% {
+        transform: rotateZ(30deg);
+        top: -15px;
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotateZ(80deg);
+        top: 0px;
+        opacity: 0;
+    }
+}
+
+@keyframes dropFall {
+    0% {
+        bottom: 0%;
+        opacity: 0.2;
+    }
+
+    70% {
+        bottom: -20px;
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    90% {
+        bottom: -70vh;
+        opacity: .2;
+    }
+
+    100% {
+        bottom: 0%;
+        opacity: 0;
+    }
+}

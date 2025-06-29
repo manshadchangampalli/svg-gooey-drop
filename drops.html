@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gooey Drop</title>
+    <link
+      rel="stylesheet"
+      href="gooey.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="pipe">
+        <div class="liquid">
+          <div class="drop-top"></div>
+          <div class="drop"></div>
+        </div>
+      </div>
+
+      <svg>
+        <defs>
+          <filter id="liquid">
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="liquid" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    <div class="floor">
+      <div class="mini-splash">
+        <span class="dot d1"></span>
+        <span class="dot d2"></span>
+        <span class="dot d3"></span>
+        <span class="dot d4"></span>
+      </div>
+    </div>
+  </body>
+</html>
